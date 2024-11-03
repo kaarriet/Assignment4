@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://github.com/kaarriet/Assignment4/"
+            targetNamespace="http://github.com/kaarriet/Assignment4/"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+    
+    <xsd:element name="Hotels" type="HotelsType"/>
+    
+    <xsd:complexType name="HotelsType">
+        <xsd:sequence>
+            <xsd:element name="Hotel" type="HotelType" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="HotelType">
+        <xsd:sequence>
+            <xsd:element name="Name" type="xsd:string"/>
+            <xsd:element name="Address" type="AddressType"/>
+            <xsd:element name="Phone" type="PhoneType" minOccurs="1" maxOccurs="unbounded"/>
+            <xsd:element name="Rating" type="xsd:decimal" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="NearbyAirport" type="xsd:string" use="optional"/>
+    </xsd:complexType>
+    
+    <xsd:complexType name="AddressType">
+        <xsd:sequence>
+            <xsd:element name="Number" type="xsd:int"/>
+            <xsd:element name="Street" type="xsd:string"/>
+            <xsd:element name="City" type="xsd:string"/>
+            <xsd:element name="State" type="xsd:string"/>
+            <xsd:element name="Zip" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="PhoneType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="type" type="xsd:string" use="optional"/>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+</xsd:schema>
